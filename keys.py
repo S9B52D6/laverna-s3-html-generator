@@ -18,10 +18,9 @@ class Keys:
                 """.format(Keys.KEY_TABLE_NAME)
 
         for key in keys:
-            print obj.key
-            iso_timestamp = obj.last_modified.strftime("%Y%m%dT%H%M%SZ")
+            iso_timestamp = key.last_modified.strftime("%Y%m%dT%H%M%SZ")
             cursor.execute(query,
-                           (obj.key, obj.size, obj.storage_class, iso_timestamp))
+                           (key.key, key.size, key.storage_class, iso_timestamp))
 
     @staticmethod
     def getNewestKey(cursor):
