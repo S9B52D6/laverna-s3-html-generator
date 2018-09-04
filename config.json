@@ -1,9 +1,0 @@
-{
-  "connectionString": "host='ec2-34-207-147-139.compute-1.amazonaws.com' dbname='laverna' user='utility' password=''",
-  "bucketName": "storage-9bb5c9fc-aad0-11e8-914c-d3d92b1c7adb",
-  "tableNames": {
-    "key": "s3_keys",
-    "notebook": "notebook",
-    "notes": "note"
-  }
-}
