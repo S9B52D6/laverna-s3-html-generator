@@ -6,12 +6,13 @@ from modules.config import Config
 currentDateTime = DateTime.datetime.now().isoformat()
 ROOT_PATH = Config().getRootPath()
 zipName = "laverna-{}.zip".format(currentDateTime)
-zipFilePath = "archives/{}".format(zipName)
+zipFilePath = "{}".format(zipName)
 key = "{}{}".format(ROOT_PATH, zipName)
 
 syncDirectory = Config().getSyncDirectory()
+syncDirectoryParent = Config().getSyncDirectoryParent()
 print "Creating archive from Laverna data..."
-os.system("mkdir -p archives/")
+os.chdir(syncDirectoryParent)
 os.system("zip -rq {} {}".format(zipFilePath, syncDirectory))
 
 s3 = boto3.client('s3')

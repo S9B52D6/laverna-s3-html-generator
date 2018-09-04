@@ -69,7 +69,7 @@ os.system("rm -drf current/*")
 # Unzip archive
 print "Unzipping archive..."
 os.system("unzip -q archives/{} -d current/".format(key))
-os.chdir("current/laverna-backups/notes-db")
+os.chdir("current/notes-db")
 
 # Insert notebook metadata to database
 with open('notebooks.json') as _file:

@@ -15,3 +15,7 @@ class Config:
     @staticmethod
     def getSyncDirectory():
         return Config.data["client"]["syncDirectory"]
+
+    @staticmethod
+    def getSyncDirectoryParent():
+        return Config.data["client"]["syncDirectoryParent"]

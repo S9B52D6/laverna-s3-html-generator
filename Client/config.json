@@ -4,6 +4,7 @@
       "rootPath": "laverna/"
   },
   "client": {
-      "syncDirectory": "/home/saneiro/Downloads/notes-db/"
+      "syncDirectory": "notes-db/",
+      "syncDirectoryParent": "/home/saneiro/Downloads/"
   }
 }
