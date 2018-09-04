@@ -110,7 +110,7 @@ for note in notesNeedingGeneration:
         os.system("mkdir -p ../../../../generated-files/{}".format(notebookName.replace(' ', '-')))
         outputFileName = "../../../../generated-files/{}/{}.html".format(notebookName, note["title"])
     else:
-        outputFileName = "../../../../generated-files/{}.html".format(note["title"]
+        outputFileName = "../../../../generated-files/{}.html".format(note["title"])
 
     outputFileName = outputFileName.replace(' ', '-')
     inputFileName = "{}.md".format(note["id"])
