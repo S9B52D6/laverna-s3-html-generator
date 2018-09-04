@@ -35,6 +35,8 @@ CONNECTION_STRING = Config().getConnectionString()
 sql_conn = psycopg2.connect(CONNECTION_STRING)
 cursor = sql_conn.cursor()
 
+print "Connected to database..."
+
 ROOT_PATH = Config().getRootPath()
 
 # Determine if there are new items to insert into table
@@ -42,6 +44,8 @@ tableSize = Keys.getCount(cursor)
 bucketSize = Bucket.getObjectCount(ROOT_PATH)
 numNewItems = bucketSize - tableSize
 hasNewVersion = numNewItems > 0
+
+print "Calculating size..."
 
 if not hasNewVersion:
     print "No New Version Available"
@@ -72,11 +76,13 @@ os.system("unzip -q archives/{} -d current/".format(key))
 os.chdir("current/notes-db")
 
 # Insert notebook metadata to database
-with open('notebooks.json') as _file:
-    notebooks = json.load(_file)
-Notebook.insert(notebooks, cursor)
+os.chdir('notebooks')
+filenames = getFileNamesByExtension()
+for name in filenames["json"]:
+    notebook = json.load(open(name))
+    Notebook.insert(notebook, cursor)
 
-os.chdir('notes')
+os.chdir('../notes')
 
 # Ids for notes which need to have their
 # markdown converted into html
@@ -107,10 +113,10 @@ for note in notesNeedingGeneration:
     # Create sub-directory with name of each notebook
     if note["notebookId"] != "0":
         notebookName = Notebook.getById(note["notebookId"], cursor)[2]
-        os.system("mkdir -p ../../../../generated-files/{}".format(notebookName.replace(' ', '-')))
-        outputFileName = "../../../../generated-files/{}/{}.html".format(notebookName, note["title"])
+        os.system("mkdir -p ../../../generated-files/{}".format(notebookName.replace(' ', '-')))
+        outputFileName = "../../../generated-files/{}/{}.html".format(notebookName, note["title"])
     else:
-        outputFileName = "../../../../generated-files/{}.html".format(note["title"])
+        outputFileName = "../../../generated-files/{}.html".format(note["title"])
 
     outputFileName = outputFileName.replace(' ', '-')
     inputFileName = "{}.md".format(note["id"])
