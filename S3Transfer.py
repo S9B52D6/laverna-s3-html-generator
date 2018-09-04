@@ -118,4 +118,3 @@ cursor.close()
 sql_conn.close()
 
 print "Finished: {} new files generated".format(len(notesNeedingGeneration))
-os.system("rm -f *.pyc")
