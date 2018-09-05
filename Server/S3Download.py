@@ -30,6 +30,8 @@ def getFileNamesByExtension():
         fileDic[extension].append(name)
     return fileDic
 
+print datetime.datetime.now()
+
 # Create SQL connection
 CONNECTION_STRING = Config().getConnectionString()
 sql_conn = psycopg2.connect(CONNECTION_STRING)

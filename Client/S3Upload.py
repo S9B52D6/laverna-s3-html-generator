@@ -9,6 +9,8 @@ zipName = "laverna-{}.zip".format(currentDateTime)
 zipFilePath = "{}".format(zipName)
 key = "{}{}".format(ROOT_PATH, zipName)
 
+print DateTime.datetime.now()
+
 syncDirectory = Config().getSyncDirectory()
 syncDirectoryParent = Config().getSyncDirectoryParent()
 print "Creating archive from Laverna data..."
