@@ -122,7 +122,11 @@ for note in notesNeedingGeneration:
 
     outputFileName = outputFileName.replace(' ', '-')
     inputFileName = "{}.md".format(note["id"])
-    markdown.markdownFromFile(inputFileName, outputFileName)
+    
+    try:
+        markdown.markdownFromFile(inputFileName, outputFileName)
+    except:
+        print "Could not convert file: {}.".format(inputFileName) 
 
 sql_conn.commit()
 cursor.close()
